@@ -7,10 +7,12 @@ import java.util.List;
 public class HardDriveCustomerRepository extends AbstractHardDriveRepository<Customer> implements CustomerRepository {
     private final String repositoryLocation = "customers.ser";
 
+    @Override
     public Customer byId(Long id) {
         return loadAllElements().stream().filter(customer -> customer.getId().equals(id)).findAny().orElse(null);
     }
 
+    @Override
     public Customer add(Customer customer) {
         List<Customer> customers = loadAllElements();
         Long newCustomerId = getNextId(customers);
