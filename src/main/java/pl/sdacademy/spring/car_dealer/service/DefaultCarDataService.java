@@ -6,7 +6,8 @@ import pl.sdacademy.spring.car_dealer.repository.VehicleRepository;
 import java.util.List;
 
 public class DefaultCarDataService implements CarDataService {
-    private final VehicleRepository vehicleRepository;
+    private VehicleRepository vehicleRepository;
+
 
     public DefaultCarDataService(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
@@ -15,4 +16,7 @@ public class DefaultCarDataService implements CarDataService {
     public List<Vehicle> loadCarsThatCanBeSold() {
         return vehicleRepository.getAvailable();
     }
+
+
+
 }

@@ -32,10 +32,10 @@ public abstract class AbstractHardDriveRepository<T extends BaseModel> {
     }
 
     protected void initialize() {
-        System.out.println("Initializing Repository");
+        System.out.println("Initializing Repository  " + this.getClass().getSimpleName());
     }
 
     protected void cleanUp() {
-        System.out.println("Cleaning Up Repository");
+        System.out.println("Cleaning Up Repository: " + this.getClass().getSimpleName());
     }
 }

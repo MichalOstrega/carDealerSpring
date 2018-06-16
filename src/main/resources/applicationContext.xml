@@ -5,9 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--
-    <context:component-scan base-package="pl.sdacademy.spring.car_dealer"/>
--->
+    <!--
+        <context:component-scan base-package="pl.sdacademy.spring.car_dealer"/>
+    -->
 
     <!-- Repositories -->
 
@@ -31,15 +31,14 @@
     <!-- Services-->
 
     <bean name="defaultCarDataService"
-          class="pl.sdacademy.spring.car_dealer.service.DefaultCarDataService">
-        <constructor-arg index="0" ref="hardDriveVehicleRepository"/>
+          class="pl.sdacademy.spring.car_dealer.service.DefaultCarDataService"
+          autowire="constructor">
     </bean>
 
     <bean name="defaultSellingService"
-          class="pl.sdacademy.spring.car_dealer.service.DefaultSellingService">
-        <constructor-arg index="0" ref="hardDriveVehicleRepository"/>
-        <constructor-arg index="1" ref="hardDriveCustomerRepository"/>
-        <constructor-arg index="2" ref="hardDrivePurchaseRepository"/>
+          class="pl.sdacademy.spring.car_dealer.service.DefaultSellingService"
+    autowire="constructor">
+
 
     </bean>
 
@@ -47,20 +46,20 @@
     <!--Controllers-->
 
     <bean name="carDataController"
-          class="pl.sdacademy.spring.car_dealer.controller.CarDataController">
-        <constructor-arg index="0" ref="defaultCarDataService"/>
+          class="pl.sdacademy.spring.car_dealer.controller.CarDataController"
+    autowire="constructor">
     </bean>
 
     <bean name="sellingController"
-          class="pl.sdacademy.spring.car_dealer.controller.SellingController">
-        <constructor-arg index="0" ref="defaultSellingService"/>
+          class="pl.sdacademy.spring.car_dealer.controller.SellingController"
+    autowire="constructor">
     </bean>
 
     <!-- Application -->
     <bean name="application"
-          class="pl.sdacademy.spring.car_dealer.Application">
-        <property name="carDataController" ref="carDataController"/>
-        <property name="sellingController" ref="sellingController"/>
+          class="pl.sdacademy.spring.car_dealer.Application"
+    autowire="byType">
+
     </bean>
 
 
