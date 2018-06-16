@@ -15,7 +15,6 @@ public class CarDataController {
 
     private final CarDataService carDataService;
 
-    @Autowired
     public CarDataController(CarDataService carDataService) {
         this.carDataService = carDataService;
     }

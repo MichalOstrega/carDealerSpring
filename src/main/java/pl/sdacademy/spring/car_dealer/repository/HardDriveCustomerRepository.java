@@ -11,7 +11,6 @@ import java.util.List;
 public class HardDriveCustomerRepository extends AbstractHardDriveRepository<Customer> implements CustomerRepository {
     private final String repositoryLocation;
 
-    @Autowired
     public HardDriveCustomerRepository(@Value("${repository.customer.hardDriveLocation}") String repositoryLocation) {
         this.repositoryLocation = repositoryLocation;
     }

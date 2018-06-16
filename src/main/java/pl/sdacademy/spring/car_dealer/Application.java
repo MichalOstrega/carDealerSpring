@@ -11,9 +11,13 @@ import java.util.Scanner;
 
 public class Application {
 
-    @Autowired
     private CarDataController carDataController;
     private SellingController sellingController;
+
+    public Application(CarDataController carDataController, SellingController sellingController) {
+        this.carDataController = carDataController;
+        this.sellingController = sellingController;
+    }
 
     public void start() {
         Long choice = -1L;
@@ -56,8 +60,14 @@ public class Application {
         }
     }
 
-    @Autowired
+/*    @Autowired
     public void setSellingController(SellingController sellingController) {
         this.sellingController = sellingController;
     }
+
+
+    @Autowired
+    public void setCarDataController(CarDataController carDataController) {
+        this.carDataController = carDataController;
+    }*/
 }

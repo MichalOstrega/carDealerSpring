@@ -12,7 +12,6 @@ import java.util.List;
 public class DefaultCarDataService implements CarDataService {
     private VehicleRepository vehicleRepository;
 
-    @Autowired
     public DefaultCarDataService(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }

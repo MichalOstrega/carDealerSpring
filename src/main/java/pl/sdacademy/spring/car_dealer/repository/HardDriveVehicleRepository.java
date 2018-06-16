@@ -14,7 +14,6 @@ public class HardDriveVehicleRepository extends AbstractHardDriveRepository<Vehi
 
     private final String repositoryLocation;
 
-    @Autowired
     public HardDriveVehicleRepository(@Value("${repository.vehicle.hardDriveLocation}") String repositoryLocation) {
         this.repositoryLocation = repositoryLocation;
     }
