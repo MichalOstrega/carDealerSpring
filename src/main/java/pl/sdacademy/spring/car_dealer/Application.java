@@ -1,13 +1,17 @@
 package pl.sdacademy.spring.car_dealer;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.sdacademy.spring.car_dealer.controller.CarDataController;
 import pl.sdacademy.spring.car_dealer.controller.SellingController;
 
 import java.util.Scanner;
 
+@Component
 
 public class Application {
 
+    @Autowired
     private CarDataController carDataController;
     private SellingController sellingController;
 
@@ -52,11 +56,7 @@ public class Application {
         }
     }
 
-
-    public void setCarDataController(CarDataController carDataController) {
-        this.carDataController = carDataController;
-    }
-
+    @Autowired
     public void setSellingController(SellingController sellingController) {
         this.sellingController = sellingController;
     }
