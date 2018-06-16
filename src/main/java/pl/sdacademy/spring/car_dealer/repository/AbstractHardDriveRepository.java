@@ -30,4 +30,12 @@ public abstract class AbstractHardDriveRepository<T extends BaseModel> {
     protected Long getNextId(List<T> modelObjects) {
         return modelObjects.stream().map(BaseModel::getId).max(Long::compare).orElse(1L);
     }
+
+    protected void initialize() {
+        System.out.println("Initializing Repository");
+    }
+
+    protected void cleanUp() {
+        System.out.println("Cleaning Up Repository");
+    }
 }
