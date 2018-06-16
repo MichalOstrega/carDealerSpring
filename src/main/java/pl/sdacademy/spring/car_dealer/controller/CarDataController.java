@@ -1,5 +1,7 @@
 package pl.sdacademy.spring.car_dealer.controller;
 
+import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.sdacademy.spring.car_dealer.model.Vehicle;
 import pl.sdacademy.spring.car_dealer.service.CarDataService;
 

@@ -2,19 +2,13 @@ package pl.sdacademy.spring.car_dealer;
 
 import pl.sdacademy.spring.car_dealer.controller.CarDataController;
 import pl.sdacademy.spring.car_dealer.controller.SellingController;
-import pl.sdacademy.spring.car_dealer.repository.*;
-import pl.sdacademy.spring.car_dealer.service.CarDataService;
-import pl.sdacademy.spring.car_dealer.service.DefaultCarDataService;
-import pl.sdacademy.spring.car_dealer.service.DefaultSellingService;
-import pl.sdacademy.spring.car_dealer.service.SellingService;
 
 import java.util.Scanner;
 
 
-
 public class Application {
 
-        private CarDataController carDataController;
+    private CarDataController carDataController;
     private SellingController sellingController;
 
     public void start() {
@@ -57,7 +51,6 @@ public class Application {
             return -1L;
         }
     }
-
 
 
     public void setCarDataController(CarDataController carDataController) {

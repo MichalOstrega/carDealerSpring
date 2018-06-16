@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+<!--
+    <context:component-scan base-package="pl.sdacademy.spring.car_dealer"/>
+-->
 
     <!-- Repositories -->
+
     <bean name="hardDriveVehicleRepository"
           class="pl.sdacademy.spring.car_dealer.repository.HardDriveVehicleRepository"
-    init-method="initialize"
-    destroy-method="cleanUp">
-
-
-    </bean>
+          init-method="initialize"
+          destroy-method="cleanUp"/>
 
 
     <bean name="hardDriveCustomerRepository"
@@ -34,7 +36,7 @@
     </bean>
 
     <bean name="defaultSellingService"
-    class="pl.sdacademy.spring.car_dealer.service.DefaultSellingService">
+          class="pl.sdacademy.spring.car_dealer.service.DefaultSellingService">
         <constructor-arg index="0" ref="hardDriveVehicleRepository"/>
         <constructor-arg index="1" ref="hardDriveCustomerRepository"/>
         <constructor-arg index="2" ref="hardDrivePurchaseRepository"/>
@@ -56,11 +58,10 @@
 
     <!-- Application -->
     <bean name="application"
-    class="pl.sdacademy.spring.car_dealer.Application">
+          class="pl.sdacademy.spring.car_dealer.Application">
         <property name="carDataController" ref="carDataController"/>
         <property name="sellingController" ref="sellingController"/>
     </bean>
-
 
 
 </beans>
