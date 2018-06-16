@@ -5,10 +5,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
+   <!-- <context:property-placeholder location="classpath:application.properties"/>
+-->
     <!--
-        <context:component-scan base-package="pl.sdacademy.spring.car_dealer"/>
+    <context:component-scan base-package="pl.sdacademy.spring.car_dealer"/>
     -->
+
+    <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="location" value="application.properties"/>
+    </bean>
 
     <!-- Repositories -->
 
@@ -16,7 +21,7 @@
           class="pl.sdacademy.spring.car_dealer.repository.HardDriveVehicleRepository"
           init-method="initialize"
           destroy-method="cleanUp">
-        <constructor-arg name="repositoryLocation" value="vehicles.ser"/>
+        <constructor-arg name="repositoryLocation" value="${repository.vehicle.hardDriveLocation}"/>
     </bean>
 
 
@@ -24,7 +29,7 @@
           class="pl.sdacademy.spring.car_dealer.repository.HardDriveCustomerRepository"
           init-method="initialize"
           destroy-method="cleanUp">
-        <constructor-arg name="repositoryLocation" value="customers.ser"/>
+        <constructor-arg name="repositoryLocation" value="${repository.customer.hardDriveLocation}"/>
     </bean>
 
     <bean name="hardDrivePurchaseRepository"
@@ -32,7 +37,7 @@
           init-method="initialize"
           destroy-method="cleanUp">
 
-        <constructor-arg name="repositoryLocation" value="purchases.ser"/>
+        <constructor-arg name="repositoryLocation" value="${repository.purchase.hardDriveLocation}"/>
     </bean>
 
 
