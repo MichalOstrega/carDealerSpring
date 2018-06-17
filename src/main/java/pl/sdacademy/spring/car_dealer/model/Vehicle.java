@@ -1,14 +1,24 @@
 package pl.sdacademy.spring.car_dealer.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.io.Serializable;
 
+@Entity
 public class Vehicle extends BaseModel implements Serializable {
+    @Column(name = "manufacturer")
     private String manufacturer;
+    @Column (name = "model")
     private String model;
+    @Column (name = "production_year")
     private Long productionYear;
+    @Column (name = "mileage")
     private Long mileage;
+    @Column (name = "fuel")
     private String fuel;
+    @Column (name = "price")
     private Long price;
+    @Column (name = "sold")
     private boolean sold;
 
     public String getManufacturer() {

@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import pl.sdacademy.spring.car_dealer.model.Purchase;
+import pl.sdacademy.spring.car_dealer.quailifier.HardDriveStorage;
 
 import java.util.List;
 
 @Repository
+@HardDriveStorage
 public class HardDrivePurchaseRepository extends AbstractHardDriveRepository<Purchase> implements PurchaseRepository {
     private final String repositoryLocation;
 

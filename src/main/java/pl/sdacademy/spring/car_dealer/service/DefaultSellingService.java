@@ -1,11 +1,12 @@
 package pl.sdacademy.spring.car_dealer.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.sdacademy.spring.car_dealer.model.Customer;
 import pl.sdacademy.spring.car_dealer.model.Purchase;
 import pl.sdacademy.spring.car_dealer.model.Vehicle;
+import pl.sdacademy.spring.car_dealer.quailifier.HardDriveStorage;
+import pl.sdacademy.spring.car_dealer.quailifier.PlainSellingService;
 import pl.sdacademy.spring.car_dealer.repository.CustomerRepository;
 import pl.sdacademy.spring.car_dealer.repository.PurchaseRepository;
 import pl.sdacademy.spring.car_dealer.repository.VehicleRepository;
@@ -14,6 +15,7 @@ import java.util.Date;
 
 
 @Service
+@PlainSellingService
 public class DefaultSellingService implements SellingService {
 
     private VehicleRepository vehicleRepository;
@@ -22,7 +24,7 @@ public class DefaultSellingService implements SellingService {
 
     public DefaultSellingService(
             VehicleRepository vehicleRepository,
-            @Qualifier("hardDriveCustomerRepository") CustomerRepository customerRepository,
+            @HardDriveStorage CustomerRepository customerRepository,
             PurchaseRepository purchaseRepository) {
         this.vehicleRepository = vehicleRepository;
 
@@ -39,8 +41,8 @@ public class DefaultSellingService implements SellingService {
         vehicleRepository.update(vehicle);
         customer = customerRepository.add(customer);
         Purchase purchase = new Purchase();
-        purchase.setVehicleId(vehicleId);
-        purchase.setCustomerId(customer.getId());
+        purchase.setVehicle(vehicle);
+        purchase.setCustomer(customer);
         purchase.setDate(new Date());
         purchase.setPrice(price);
         return purchaseRepository.add(purchase);
