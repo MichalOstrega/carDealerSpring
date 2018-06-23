@@ -30,8 +30,9 @@ public class DefaultSellingService implements SellingService {
     }
 
     public Purchase sell(Long vehicleId, final Customer customer, Long price) {
-        Optional<Vehicle> notSoldVehicle = vehicleRepository.findNotSoldVehicle(vehicleId);
-        return notSoldVehicle.map(vehicle -> performSell(vehicle,customer,price)).orElse(null);
+        return vehicleRepository.findNotSoldVehicle(vehicleId)
+                .map(vehicle -> performSell(vehicle,customer,price))
+                .orElse(null);
 
 
     }
@@ -39,6 +40,9 @@ public class DefaultSellingService implements SellingService {
     private Purchase performSell(Vehicle vehicle, Customer customer, Long price){
         vehicle.setSold(true);
         vehicleRepository.save(vehicle);
+
+        customer = customerRepository.findCustomerByDocumentNo(customer.getDocumentNo()).orElse(customer);
+
         Customer persistedCustomer = customerRepository.save(customer);
         Purchase purchase = new Purchase();
         purchase.setVehicle(vehicle);
