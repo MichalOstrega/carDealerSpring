@@ -41,9 +41,15 @@ public class DefaultSellingService implements SellingService {
         vehicle.setSold(true);
         vehicleRepository.save(vehicle);
 
-        customer = customerRepository.findCustomerByDocumentNo(customer.getDocumentNo()).orElse(customer);
 
-        Customer persistedCustomer = customerRepository.save(customer);
+
+
+        Customer persistedCustomer = customerRepository
+                //z repozytorium pobierz klienta po jego numerze dokumentu
+                .findCustomerByDocumentNo(customer.getDocumentNo())
+                //tego klienta przypisz do referencji persistedCustomer,
+                // jeżeli go nie było to zapisz nowego w bazie i jego przypisz do referencji
+                .orElse(customerRepository.save(customer));
         Purchase purchase = new Purchase();
         purchase.setVehicle(vehicle);
         purchase.setCustomer(persistedCustomer);
