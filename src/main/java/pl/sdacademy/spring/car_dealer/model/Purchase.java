@@ -16,8 +16,7 @@ public class Purchase extends BaseModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    @Column (name = "data")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column (name = "date")
     private Date date;
     @Column (name = "price")
     private Long price;

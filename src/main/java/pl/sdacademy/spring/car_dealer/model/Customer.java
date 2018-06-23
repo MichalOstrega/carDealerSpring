@@ -7,13 +7,10 @@ import java.io.Serializable;
 
 @Entity
 public class Customer extends BaseModel implements Serializable {
-    @Column(name = "name")
     private String name;
-    @Column(name = "surname")
     private String surname;
     @Column (name = "document_no")
     private String documentNo;
-    @Column (name = "telephone")
     private String telephone;
 
     public String getName() {
@@ -30,6 +27,16 @@ public class Customer extends BaseModel implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", documentNo='" + documentNo + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
     }
 
     public String getDocumentNo() {

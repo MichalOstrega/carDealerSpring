@@ -2,6 +2,7 @@ package pl.sdacademy.spring.car_dealer;
 
 import org.springframework.stereotype.Component;
 import pl.sdacademy.spring.car_dealer.controller.CarDataController;
+import pl.sdacademy.spring.car_dealer.controller.CustomerController;
 import pl.sdacademy.spring.car_dealer.controller.SellingController;
 
 import java.util.Scanner;
@@ -12,10 +13,12 @@ public class Application {
 
     private CarDataController carDataController;
     private SellingController sellingController;
+    private CustomerController customerController;
 
-    public Application(CarDataController carDataController, SellingController sellingController) {
+    public Application(CarDataController carDataController, SellingController sellingController, CustomerController customerController) {
         this.carDataController = carDataController;
         this.sellingController = sellingController;
+        this.customerController = customerController;
     }
 
     public void start() {
@@ -32,6 +35,15 @@ public class Application {
                     Long vehicleId = readInput();
                     sellingController.buyVehicle(vehicleId);
                     break;
+                case 3:
+                    carDataController.createCar();
+                    break;
+                case 4:
+                    customerController.searchInDB();
+                    break;
+                case 5:
+                    carDataController.printAllCars();
+                    break;
                 case 9:
                     break;
                 default:
@@ -41,12 +53,15 @@ public class Application {
 
     }
 
+
+
     private void printMenu() {
         System.out.println();
         System.out.println();
         System.out.println("Welcome in Car Dealer application! What you want to do?");
         System.out.println("1) Show Vehicles");
         System.out.println("2) Sell Vehicle");
+        System.out.println("3) Add Vehicle");
         System.out.println("9) Exit");
         System.out.print("What is your choice? ");
     }

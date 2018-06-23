@@ -1,4 +1,16 @@
 package pl.sdacademy.spring.car_dealer.repository;
 
-public interface VehicleFinder {
+import org.springframework.data.repository.CrudRepository;
+import pl.sdacademy.spring.car_dealer.model.Vehicle;
+
+import java.util.List;
+
+public interface VehicleFinder  {
+    List<Vehicle> getAvailable();
+
+    List<Vehicle> getAll();
+
+    Long totalCount();
+
+    Long totalCountForAvailable();
 }

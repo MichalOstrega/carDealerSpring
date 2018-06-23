@@ -1,21 +1,18 @@
 package pl.sdacademy.spring.car_dealer.service;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.sdacademy.spring.car_dealer.model.Customer;
 import pl.sdacademy.spring.car_dealer.model.Purchase;
 import pl.sdacademy.spring.car_dealer.model.Vehicle;
-import pl.sdacademy.spring.car_dealer.quailifier.HardDriveStorage;
-import pl.sdacademy.spring.car_dealer.quailifier.PlainSellingService;
 import pl.sdacademy.spring.car_dealer.repository.CustomerRepository;
 import pl.sdacademy.spring.car_dealer.repository.PurchaseRepository;
 import pl.sdacademy.spring.car_dealer.repository.VehicleRepository;
 
 import java.util.Date;
+import java.util.Optional;
 
 
 @Service
-@PlainSellingService
 public class DefaultSellingService implements SellingService {
 
     private VehicleRepository vehicleRepository;
@@ -24,7 +21,7 @@ public class DefaultSellingService implements SellingService {
 
     public DefaultSellingService(
             VehicleRepository vehicleRepository,
-            @HardDriveStorage CustomerRepository customerRepository,
+            CustomerRepository customerRepository,
             PurchaseRepository purchaseRepository) {
         this.vehicleRepository = vehicleRepository;
 
@@ -33,18 +30,19 @@ public class DefaultSellingService implements SellingService {
     }
 
     public Purchase sell(Long vehicleId, Customer customer, Long price) {
-        Vehicle vehicle = vehicleRepository.byId(vehicleId);
-        if (vehicle == null) {
+        Optional<Vehicle> notSoldVehicle = vehicleRepository.findNotSoldVehicle(vehicleId);
+//        notSoldVehicle.ifPresent(vehicle -> );
+        if (!notSoldVehicle.isPresent()) {
             return null;
         }
+        Vehicle vehicle = notSoldVehicle.get();
         vehicle.setSold(true);
-        vehicleRepository.update(vehicle);
-        customer = customerRepository.add(customer);
+        vehicleRepository.save(vehicle);
+        customer = customerRepository.save(customer);
         Purchase purchase = new Purchase();
         purchase.setVehicle(vehicle);
-        purchase.setCustomer(customer);
         purchase.setDate(new Date());
         purchase.setPrice(price);
-        return purchaseRepository.add(purchase);
+        return purchaseRepository.save(purchase);
     }
 }
