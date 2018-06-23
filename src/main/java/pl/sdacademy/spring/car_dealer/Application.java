@@ -45,7 +45,13 @@ public class Application {
                     carDataController.printAllCars();
                     break;
                 case 6:
-                    customerController.printCustomers();
+                    customerController.showCustomers();
+                    break;
+                case 7:
+                    sellingController.showPurchaseHistory();
+                    break;
+                case 8:
+                    sellingController.showPurchaseHistoryBetweenPrices();
                     break;
                 case 9:
                     break;
@@ -65,6 +71,8 @@ public class Application {
         System.out.println("2) Sell Vehicle");
         System.out.println("3) Add Vehicle");
         System.out.println("6) Show Customers");
+        System.out.println("7) Show Customer History");
+        System.out.println("8) Show History between Price");
         System.out.println("9) Exit");
         System.out.print("What is your choice? ");
     }

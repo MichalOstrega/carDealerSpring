@@ -61,10 +61,11 @@ public class CustomerController {
         }
     }
 
-    public void printCustomers(){
+    public void showCustomers(){
         List<Customer> customers = customerService.getAll();
         customers.forEach(System.out::println);
     }
+
 
     public CustomerService getCustomerService() {
         return customerService;

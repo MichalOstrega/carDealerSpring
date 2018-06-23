@@ -52,4 +52,14 @@ public class Purchase extends BaseModel implements Serializable {
     public void setPrice(Long price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "vehicle=" + vehicle.getManufacturer() + " " + vehicle.getModel() +
+                ", customer=" + customer.getName() + " " + customer.getSurname() +
+                ", date=" + date +
+                ", price=" + price +
+                '}';
+    }
 }
