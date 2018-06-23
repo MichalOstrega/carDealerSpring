@@ -7,4 +7,6 @@ import java.util.List;
 public interface CustomerService {
     List<Customer> searchByLastName(String lastName);
     List<Customer> serachByFirstOrLastName(String name);
+
+    List<Customer> getAll();
 }

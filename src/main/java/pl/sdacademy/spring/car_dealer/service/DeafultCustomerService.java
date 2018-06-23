@@ -5,6 +5,9 @@ import pl.sdacademy.spring.car_dealer.model.Customer;
 import pl.sdacademy.spring.car_dealer.repository.CustomerFinder;
 import pl.sdacademy.spring.car_dealer.repository.CustomerRepository;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -24,6 +27,18 @@ public class DeafultCustomerService implements CustomerService{
     @Override
     public List<Customer> serachByFirstOrLastName(String name) {
         return customerFinder.searchByFirstOrLastName(name);
+    }
+
+    @Override
+    public List<Customer> getAll() {
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        Iterable<Customer> all = customerRepository.findAll();
+
+        all.forEach(customer -> customers.add(customer));
+
+        return customers;
+
     }
 
 

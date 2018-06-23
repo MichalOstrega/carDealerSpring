@@ -44,6 +44,9 @@ public class Application {
                 case 5:
                     carDataController.printAllCars();
                     break;
+                case 6:
+                    customerController.printCustomers();
+                    break;
                 case 9:
                     break;
                 default:
@@ -54,7 +57,6 @@ public class Application {
     }
 
 
-
     private void printMenu() {
         System.out.println();
         System.out.println();
@@ -62,6 +64,7 @@ public class Application {
         System.out.println("1) Show Vehicles");
         System.out.println("2) Sell Vehicle");
         System.out.println("3) Add Vehicle");
+        System.out.println("6) Show Customers");
         System.out.println("9) Exit");
         System.out.print("What is your choice? ");
     }
