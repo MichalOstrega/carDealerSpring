@@ -29,18 +29,20 @@ public class DefaultSellingService implements SellingService {
         this.purchaseRepository = purchaseRepository;
     }
 
-    public Purchase sell(Long vehicleId, Customer customer, Long price) {
+    public Purchase sell(Long vehicleId, final Customer customer, Long price) {
         Optional<Vehicle> notSoldVehicle = vehicleRepository.findNotSoldVehicle(vehicleId);
-//        notSoldVehicle.ifPresent(vehicle -> );
-        if (!notSoldVehicle.isPresent()) {
-            return null;
-        }
-        Vehicle vehicle = notSoldVehicle.get();
+        return notSoldVehicle.map(vehicle -> performSell(vehicle,customer,price)).orElse(null);
+
+
+    }
+
+    private Purchase performSell(Vehicle vehicle, Customer customer, Long price){
         vehicle.setSold(true);
         vehicleRepository.save(vehicle);
-        customer = customerRepository.save(customer);
+        Customer persistedCustomer = customerRepository.save(customer);
         Purchase purchase = new Purchase();
         purchase.setVehicle(vehicle);
+        purchase.setCustomer(persistedCustomer);
         purchase.setDate(new Date());
         purchase.setPrice(price);
         return purchaseRepository.save(purchase);
