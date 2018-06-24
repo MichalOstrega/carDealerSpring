@@ -5,9 +5,7 @@ import pl.sdacademy.spring.car_dealer.model.Customer;
 import pl.sdacademy.spring.car_dealer.repository.CustomerFinder;
 import pl.sdacademy.spring.car_dealer.repository.CustomerRepository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,6 +37,11 @@ public class DeafultCustomerService implements CustomerService{
 
         return customers;
 
+    }
+
+    @Override
+    public Customer getCustomer(Long customerId) {
+        return customerRepository.findOne(customerId);
     }
 
 

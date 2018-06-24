@@ -2,6 +2,9 @@ package pl.sdacademy.spring.car_dealer.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.sdacademy.spring.car_dealer.model.Customer;
 import pl.sdacademy.spring.car_dealer.service.CustomerService;
 
@@ -9,11 +12,22 @@ import java.util.List;
 import java.util.Scanner;
 
 @Controller
+@RequestMapping("/customers")
 public class CustomerController {
     private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+
+    @RequestMapping("/{id}")
+    public String getCustomer(@PathVariable("id") Long CustomerId, Model model){
+        Customer customer = customerService.getCustomer(CustomerId);
+        if (customer != null) {
+            model.addAttribute("customer", customer);
+        }
+        return "customerDetails";
     }
 
     public void searchInDB(){

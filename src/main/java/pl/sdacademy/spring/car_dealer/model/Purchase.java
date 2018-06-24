@@ -1,9 +1,11 @@
 package pl.sdacademy.spring.car_dealer.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Purchase extends BaseModel implements Serializable {

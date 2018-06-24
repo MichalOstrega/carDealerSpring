@@ -39,6 +39,11 @@ public class DefaultSellingService implements SellingService {
 
     }
 
+    @Override
+    public Purchase getPurchase(Long purchaseId) {
+        return purchaseRepository.findOne(purchaseId);
+    }
+
     private Purchase performSell(Vehicle vehicle, Customer customer, Long price) {
         vehicle.setSold(true);
         vehicleRepository.save(vehicle);

@@ -9,4 +9,6 @@ public interface CustomerService {
     List<Customer> serachByFirstOrLastName(String name);
 
     List<Customer> getAll();
+
+    Customer getCustomer(Long customerId);
 }

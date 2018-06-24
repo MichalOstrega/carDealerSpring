@@ -12,4 +12,5 @@ public interface SellingService {
 
     List<Purchase> getHistoryBeetwen(Long Price1, Long Price2);
 
+    Purchase getPurchase(Long purchaseId);
 }

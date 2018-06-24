@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="'Customer details: ' + ${customer.name + ' ' + customer.surname}"></title>
+</head>
+<body>
+<h1>Customer details</h1>
+
+<table border="1" rules="all" th:object="${customer}">
+    <tr><td><b>Property</b></td><td><b>Value</b></td></tr>
+    <tr><td>Name</td><td th:text="*{name}"></td></tr>
+    <tr><td>Surname</td><td th:text="*{surname}"></td></tr>
+    <tr><td>Telephone</td><td th:text="*{telephone}"></td></tr>
+
+</table>
+
+</body>
+</html>

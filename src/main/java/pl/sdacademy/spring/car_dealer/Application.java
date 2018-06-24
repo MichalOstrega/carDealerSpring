@@ -5,6 +5,7 @@ import pl.sdacademy.spring.car_dealer.controller.CarDataController;
 import pl.sdacademy.spring.car_dealer.controller.CustomerController;
 import pl.sdacademy.spring.car_dealer.controller.SellingController;
 
+import javax.annotation.PostConstruct;
 import java.util.Scanner;
 
 @Component
@@ -20,6 +21,7 @@ public class Application {
         this.sellingController = sellingController;
         this.customerController = customerController;
     }
+
 
     public void start() {
         Long choice = -1L;

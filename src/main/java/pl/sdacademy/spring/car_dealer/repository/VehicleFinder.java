@@ -1,6 +1,5 @@
 package pl.sdacademy.spring.car_dealer.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import pl.sdacademy.spring.car_dealer.model.Vehicle;
 
 import java.util.List;
